@@ -1,14 +1,14 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx
+  name: nginx-taint
    # these are replica set labels
   labels:
     purpose: taint-demo
     project: roboshop
 
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     # these labels are used to select pods
     matchLabels:

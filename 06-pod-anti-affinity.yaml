@@ -1,0 +1,23 @@
+apiersion: v1
+kind: Pod
+metadata:
+  name: pod-3
+  labels:
+    app: pod-3
+spec:
+  affinity:
+    podAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+      ## pod labels
+      - labelSelector:
+          matchExpressions:
+          - key: app
+            operator: In
+            values:
+            - pod-2
+            - pod-3
+        topologyKey: topology.kubernetes.io/zone
+  containers:
+  - name: nginx
+    image: nginx
+    imagePullPolicy: Always
